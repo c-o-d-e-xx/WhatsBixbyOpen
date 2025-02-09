@@ -76,7 +76,6 @@ Bixby(
   }
 );
 
-
 Bixby(
   {
     pattern: "spectrum",
@@ -88,9 +87,9 @@ Bixby(
     if (!message.reply_message)
       return await message.sendMessage("*Need Audio!*");
     await message.reply("```Converting..```");
-    var location = await message.reply_message.downloadMediaMessage();
+    let buff = await m.quoted.download();
 
-    ffmpeg(location)
+    ffmpeg(buff)
       .outputOptions([
         "-y",
         "-filter_complex",
